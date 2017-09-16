@@ -1,20 +1,40 @@
+{% load staticfiles %}
 <html>
     <head>
         <title>Elaine's Django Girls Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="">Elaine's Django Girls Blog</a></h1>
         </div>
-
-        {% for post in posts %}
-            <div>
-                <h1><a href="">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
-                <p>published: {{ post.published_date }}</p>
-                <br/>
-                
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <h1><a href="">{{ post.title }}</a></h1>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                            <div class="date">
+                                <p>published: {{ post.published_date }}</p>
+                            </div>
+                            <br/>
+                            
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        {% endfor %}
+        </div>
+        
+        <div>
+            <p>This blog was built from Django Girls tutorial.</p>
+            <p>For more about Django
+                <h5><a href="https://en.wikipedia.org/wiki/Django" class="external_link" id="link_to_wiki_page">click here</a></h5>
+            </p>
+        </div>
     </body>
 </html>
